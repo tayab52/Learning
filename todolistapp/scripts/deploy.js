@@ -1,19 +1,16 @@
 const hre = require("hardhat");
 
 async function main() {
+  const ToDolist = await hre.ethers.getContractFactory("ToDolist");
 
-    const ToDoList = await hre.ethers.getContractFactory("ToDoList");
-    const toDoList = await ToDoList.deploy();
+  // Deploy contract
+  const toDoList = await ToDolist.deploy();
 
-    await toDoList.deployed();
-
-    console.log("Lock with 1 ETH deployed to:", toDoList.address);
-
-    console.log(toDoList);
+  // No need for `await toDoList.deployed()` in Ethers v6
+  console.log("1  ETH deployed to:", toDoList.target); // use `.target` in Ethers v6
 }
 
-
 main().catch((error) => {
-    console.error(error);
-    process.exitCode = 1 ;
+  console.error("Deployment failed:", error);
+  process.exitCode = 1;
 });
