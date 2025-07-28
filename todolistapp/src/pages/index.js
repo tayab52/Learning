@@ -4,11 +4,12 @@
  import {ToDolistContext} from "../../context/ToDoListApp";
 
  const Home = () => {
-    const {checkIfWalletIsConnect} = useContext(ToDolistContext);
+    const {checkIfWalletIsConnect, toDolist} = useContext(ToDolistContext);
 
 
     useEffect(() => {
         checkIfWalletIsConnect();
+        toDolist();
 
     },[]);
   return <div>Home</div>
