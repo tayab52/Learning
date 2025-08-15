@@ -40,7 +40,7 @@ export const ToDolistProvider = ({children}) => {
     const connectWallet = async() =>{
         if(!window.ethereum) return setError("Please install Metamask");
 
-        const account = await window.ethereum.request({method: "eth_requesrAccounts"});
+        const account = await window.ethereum.request({method: "eth_requestAccounts"});
 
         setCurrentAccount(account[0]);
 
